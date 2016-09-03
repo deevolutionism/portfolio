@@ -1,3 +1,4 @@
+"use strict";
 import React, {Component} from "react";
 import ReactDom from "react-dom";
 import Segment from './segment.js'
@@ -63,6 +64,21 @@ class Index extends Component {
 
   handleUserSelect(title){
     console.log(title);
+    let url = `/segmentViews/${title}`;
+    $.ajax({
+      type:"PUT",
+      url:url,
+      data:{'key':'value'},
+      success: (data) => {
+        this.setSate({
+          projects: data
+        });
+      },
+      error: (err) => {
+        console.log(err);
+        return err;
+      }
+    });
   }
 
   render() {
@@ -74,10 +90,12 @@ class Index extends Component {
         console.log(this.state.projects.projects[i].image);
         portfolioItems.push(
           <Segment className = "segment" key = {this.state.projects.projects[i].title}
+            data={this.state.projects.projects[i]}
             image={this.state.projects.projects[i].image}
             title={this.state.projects.projects[i].title}
             type={this.state.projects.projects[i].type}
             date={this.state.projects.projects[i].date}
+            views={this.state.projects.projects[i].views}
             description={this.state.projects.projects[i].description}
             handleUserSelect={this.handleUserSelect}
           />

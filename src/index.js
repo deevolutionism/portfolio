@@ -7,6 +7,11 @@ import $ from "jquery";
 var version = '0.0.0';
 var pageViews = 0;
 
+var onloadCallback = function() {
+    alert("grecaptcha is ready!");
+    grecaptcha.render()
+};
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -111,6 +116,7 @@ class Index extends Component {
           <li><a href="https://github.com/deevolutionism">Github</a></li>
           <li><a href="https://twitter.com/gdemchak17">Twitter</a></li>
           <li><a href="https://www.linkedin.com/in/gentry-demchak-843a6a79">Linkedin</a></li>
+          <li><a href="/assets/GentryDemchak_Resume_2016.pdf" download>Resume</a></li>
         </ul>
         {portfolioItems}
         <div>version: {version}</div>

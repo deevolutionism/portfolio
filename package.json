@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "p5": "^0.5.3",
     "react": "^15.3.0",
     "react-router": "^2.7.0",
     "request": "^2.74.0"

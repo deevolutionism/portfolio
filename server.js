@@ -52,40 +52,27 @@ app.put('/segmentViews/:title', (req, res) => {
 });
 
 
-// ANON FACEBOOK TEMPORARY PUT
+// ANON FACEBOOK TEMPORARY API endpoints
 app.put('/createPost', (req,res) => {
+  var now = new Date();
   MongoClient.connect(url, (err, db) => {
     if (err) {return console.dir(err);}
     console.log(req);
-    res.send({'test':'success!'})
     var collection = db.collection('test');
-    collection.insert({
-        'text':
-        'time':
-    })
+    var postobject = {'text':req.body.text,'time':now.toISOString()}
+    collection.insert(postobject);
+    res.send(postobject);
   });
-  var now = new Date()
-  res.send({
-    'params': req.params,
-    'query': req.query,
-    'body': req.body
-  });
-
 });
 
 app.get('/posts', (req,res)=>{
-  // MongoClient.connect(url, (err,db) => {
-  //   if(err) {return console.dir(err);}
-  //   var collection = db.collection('test');
-    res.send({
-      'text':'Hello World',
-      'time': 'today'
+  MongoClient.connect(url, (err,db) => {
+    if(err) {return console.dir(err);}
+    var collection = db.collection('test');
+    collection.find({}).toArray( (err,docs)=>{
+      res.send({'posts':docs});
     });
-  // });
-  // res.send({
-  //   'text':'Hello World',
-  //   'time':'today'
-  // });
+  });
 });
 
 

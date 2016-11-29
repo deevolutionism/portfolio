@@ -54,26 +54,43 @@ app.put('/segmentViews/:title', (req, res) => {
 
 // ANON FACEBOOK TEMPORARY API endpoints
 app.put('/createPost', (req,res) => {
-  var now = new Date();
+  var time = new Date();
   MongoClient.connect(url, (err, db) => {
     if (err) {return console.dir(err);}
     console.log(req);
     var collection = db.collection('test');
-    var postobject = {'text':req.body.text,'time':now.toISOString()}
+    var postobject = {'text':req.body.text,'time':time.getTime()}
     collection.insert(postobject);
     res.send(postobject);
   });
 });
 
-app.get('/posts', (req,res)=>{
+app.get('/posts', (req,res)=> {
   MongoClient.connect(url, (err,db) => {
     if(err) {return console.dir(err);}
     var collection = db.collection('test');
-    collection.find({}).toArray( (err,docs)=>{
+    let currentTime = new Date;
+    let diff = currentTime.getTime() - 86400000;
+    collection.find({time:{$gte:diff}}).toArray( (err,docs)=>{
+      // docs = docs.sort(function(a,b){
+      //   // Turn your strings into dates, and then subtract them
+      //   // to get a value that is either negative, positive, or zero.
+      // return new Date(b.time) - new Date(a.time);
+      // });
       res.send({'posts':docs});
     });
   });
 });
+
+var cleanDatabase = () => {
+  MongoClient.connect(url, (err, db) => {
+    if(err) {return console.dir(err);}
+    var collection = db.collection('test');
+    collection.find({}).toArray( (err, docs) => {
+      console.log(docs);
+    });
+  });
+}
 
 
 app.listen(app.get('port'), app.get('host'), () => {

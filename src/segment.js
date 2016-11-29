@@ -1,4 +1,5 @@
 import React from 'react';
+import Tagslist from './tags.js'
 import jquery from 'jquery';
 
 export default class Segment extends React.Component {
@@ -6,7 +7,7 @@ export default class Segment extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      image: 'placeholder.png'
+      image: './placeholder.png'
     };
     this.handleUserSelect = this.handleUserSelect.bind(this);
     this.handleOnLoad = this.handleOnLoad.bind(this);
@@ -28,7 +29,7 @@ export default class Segment extends React.Component {
     });
   }
 
-  handleError(){
+  handleError() {
     this.setState({
       loading: false,
       image: 'placeholder.png'
@@ -43,7 +44,8 @@ export default class Segment extends React.Component {
     }
   }
 
-  render(){
+  render() {
+
     return (
       <div className = "segment" onClick={this.handleUserSelect}>
         {this.renderSpinner()}
@@ -54,15 +56,15 @@ export default class Segment extends React.Component {
           onError={this.handleError}
         />
         <h2>{this.props.title}</h2>
-        <h3>{this.props.type}</h3>
+        <Tagslist tags={this.props.type}/>
         <h3>{this.props.date}</h3>
         <p>{this.props.description}</p>
         <div className="project_views_container">
           <p className="project_views">
-            views
             <span className="project_views_number">
               {this.props.views}
             </span>
+            Views
           </p>
         </div>
       </div>

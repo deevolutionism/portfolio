@@ -14,7 +14,6 @@ export default class TagsMenu extends React.Component {
   render() {
     var tags = [];
     const tagNames = [
-      "All",
       "Arduino",
       "Web",
       "Javascript",

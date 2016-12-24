@@ -8,12 +8,16 @@ export default class Tagslist extends React.Component {
 
 
   render() {
-    var tagItems = <li></li>
+    // var tagItems = <li></li>
+    var tagItems = [];
     if(this.props.tags){
-      const tags = this.props.tags;
-      tagItems = tags.map((tag, index) =>
+      // var tags = this.props.tags;
+      tagItems = this.props.tags.map((tag, index) => {
         <li className = "tag" key = {index}>{tag}</li>
-      );
+      });
+      // this.props.tags.forEach((tag) => {
+      //   tagItems.push(<li className = "tag" key = {tag}>{tag}</li>);
+      // });
     }
 
     return (

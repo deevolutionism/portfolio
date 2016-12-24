@@ -21,7 +21,9 @@ class Index extends Component {
       version: 0,
       allProjects: null,
       pageViews: 0,
-      selectedTags:["All"]
+      selectedTags:[
+        
+      ]
     };
     this.getData = this.getData.bind(this);
     this.updatePageViews = this.updatePageViews.bind(this);
@@ -102,7 +104,7 @@ class Index extends Component {
     if (tagname == "All"){
       this.setState({
         projects: this.state.allProjects,
-        selectedTags: ['All']
+        selectedTags: []
       });
     } else if(selected.indexOf(tagname) > -1){
       //remove the tag, because it already

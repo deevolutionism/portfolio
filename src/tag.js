@@ -33,9 +33,9 @@ export default class Tag extends React.Component {
     }
   }
 
-  componentWillRecieveProps(nextProps) {
-    console.log(nextProps);
-  }
+  // componentWillRecieveProps(nextProps) {
+  //   console.log(nextProps);
+  // }
 
   status() {
     var status = "tag_off"

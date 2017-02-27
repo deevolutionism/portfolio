@@ -11,6 +11,7 @@
   "author": "Gentry Demchak",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "p5": "^0.5.3",
     "react": "^15.3.0",

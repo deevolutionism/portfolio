@@ -2,6 +2,7 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser')
+var cors = require('cors')
 var url = 'mongodb://localhost:27017/test';
 var MongoClient = require('mongodb').MongoClient;
 var fs = require('fs');
@@ -13,7 +14,7 @@ app.set('port', process.env.PORT || 3210);
 app.set('host', process.env.HOST || '127.0.0.1');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
+app.use(cors()) // allow cross-origin-access-controll headers http://stackoverflow.com/questions/7067966/how-to-allow-cors
 app.use(express.static('./public'));
 
 app.get('/portfolio', (req, res) => {
@@ -53,7 +54,8 @@ app.put('/segmentViews/:title', (req, res) => {
 
 
 // ANON FACEBOOK TEMPORARY API endpoints
-app.put('/createPost', (req,res) => {
+app.put('/api/createPost', (req,res) => {
+  //This submits a new post to the database.
   var time = new Date();
   MongoClient.connect(url, (err, db) => {
     if (err) {return console.dir(err);}
@@ -65,7 +67,21 @@ app.put('/createPost', (req,res) => {
   });
 });
 
-app.get('/posts', (req,res)=> {
+app.put('/api/submitComment', (req, res) => {
+  //this submits a new comment to the database.
+	var time = new Date();
+	MongoClient.connect(url, (err, db) => {
+		if(err) { return console.dir(err) }
+		var collection = db.collection('test');
+		collection.update(
+			{"_id":ObjectId(req.body._id)},
+			{$push:{comments:req.body.comment}}
+		) 
+	});
+});
+
+app.get('/api/posts', (req,res)=> {
+  //this retrieves posts from the database.
   MongoClient.connect(url, (err,db) => {
     if(err) {return console.dir(err);}
     var collection = db.collection('test');
@@ -79,6 +95,15 @@ app.get('/posts', (req,res)=> {
       // });
       res.send({'posts':docs});
     });
+  });
+});
+
+app.get('/api/announcements', (req,res) => {
+  //this returns data for the announcements component to render.
+  fs.readFile('announcements.json','utf8', (err, data) => {
+    if(err) throw err;
+    console.log(JSON.parse(data));
+    res.send(JSON.parse(data));
   });
 });
 

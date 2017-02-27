@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default class Tagslist extends React.Component {
+  //this component builds out a segment's list of related tags.
   constructor(props) {
     super(props);
 
@@ -8,16 +9,16 @@ export default class Tagslist extends React.Component {
 
 
   render() {
-    // var tagItems = <li></li>
-    var tagItems = [];
+
     if(this.props.tags){
-      // var tags = this.props.tags;
-      tagItems = this.props.tags.map((tag, index) => {
-        <li className = "tag" key = {index}>{tag}</li>
-      });
-      // this.props.tags.forEach((tag) => {
-      //   tagItems.push(<li className = "tag" key = {tag}>{tag}</li>);
+      // var tagItems = this.props.tags.map((tag, index) => {
+      //   <li className = "tag" key = {index}>{tag}</li>
       // });
+      var tagItems = [];
+      this.props.tags.forEach((tag) => {
+        tagItems.push(<li className="tag">{tag}</li>)
+      });
+      console.log(tagItems);
     }
 
     return (

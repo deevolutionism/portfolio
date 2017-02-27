@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default class Tag extends React.Component {
+  //This component is the model for a tag button
   constructor(props) {
     super(props);
     this.handleTagSelect = this.handleTagSelect.bind(this);
@@ -32,10 +33,6 @@ export default class Tag extends React.Component {
       });
     }
   }
-
-  // componentWillRecieveProps(nextProps) {
-  //   console.log(nextProps);
-  // }
 
   status() {
     var status = "tag_off"

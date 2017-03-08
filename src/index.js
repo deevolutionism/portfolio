@@ -182,7 +182,7 @@ class Index extends Component {
           <li><a href="https://github.com/deevolutionism">Github</a></li>
           <li><a href="https://twitter.com/gdemchak17">Twitter</a></li>
           <li><a href="https://www.linkedin.com/in/gentry-demchak-843a6a79">Linkedin</a></li>
-          <li><a href="/assets/GentryDemchak_Resume_2016.pdf" download>Resume</a></li>
+          <li><a href="/assets/GentryDemchak_Resume_2017.pdf" download>Resume</a></li>
         </ul>
         <Tagsmenu handleTagSelect={this.handleTagSelect} selectedTags={this.state.selectedTags}/>
         {portfolioItems}

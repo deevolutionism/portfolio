@@ -3,7 +3,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser')
 var cors = require('cors')
-var url = 'mongodb://localhost:27017/test';
+var url = 'mongodb://localhost:27017/';
 var MongoClient = require('mongodb').MongoClient;
 var fs = require('fs');
 var fileName = './pdata.json';
@@ -52,12 +52,11 @@ app.put('/segmentViews/:title', (req, res) => {
   res.send('increased views');
 });
 
-
 // ANON FACEBOOK TEMPORARY API endpoints
 app.put('/api/createPost', (req,res) => {
   //This submits a new post to the database.
   var time = new Date();
-  MongoClient.connect(url, (err, db) => {
+  MongoClient.connect(url+'test', (err, db) => {
     if (err) {return console.dir(err);}
     console.log(req);
     var collection = db.collection('test');
@@ -67,10 +66,23 @@ app.put('/api/createPost', (req,res) => {
   });
 });
 
+app.put('/api/createPost/:board', (req,res) => {
+  //This submits a new post to the database.
+  var time = new Date();
+  MongoClient.connect(`${url}${req.params.board}`, (err, db) => {
+    if (err) {return console.dir(err);}
+    console.log(req);
+    var collection = db.collection(req.params.board);
+    var postobject = {'text':req.body.text,'time':time.getTime()}
+    collection.insert(postobject);
+    res.send(postobject);
+  });
+});
+
 app.put('/api/submitComment', (req, res) => {
   //this submits a new comment to the database.
 	var time = new Date();
-	MongoClient.connect(url, (err, db) => {
+	MongoClient.connect(`${url}test`, (err, db) => {
 		if(err) { return console.dir(err) }
 		var collection = db.collection('test');
 		collection.update(
@@ -82,12 +94,12 @@ app.put('/api/submitComment', (req, res) => {
 
 app.get('/api/posts', (req,res)=> {
   //this retrieves posts from the database.
-  MongoClient.connect(url, (err,db) => {
-    if(err) {return console.dir(err);}
+  MongoClient.connect(`${url}test`, (err,db) => {
+    if(err) {return console.dir(err)}
     var collection = db.collection('test');
     let currentTime = new Date;
     let diff = currentTime.getTime() - 86400000;
-    collection.find({time:{$gte:diff}}).toArray( (err,docs)=>{
+    collection.find({time:{$gte:diff}}).toArray( (err,docs) => {
       // docs = docs.sort(function(a,b){
       //   // Turn your strings into dates, and then subtract them
       //   // to get a value that is either negative, positive, or zero.
@@ -97,6 +109,16 @@ app.get('/api/posts', (req,res)=> {
     });
   });
 });
+
+app.get('/api/b/:board', (req, res) => {
+	MongoClient.connect(`${url}${req.params.board}`, (err,db) => {
+		if(err) {return console.dir(err)}
+		var collection = db.collection(req.params.board)
+		collection.find({}).toArray( (err,docs) => {
+			res.send({'posts':docs})
+		})
+	})
+})
 
 app.get('/api/announcements', (req,res) => {
   //this returns data for the announcements component to render.

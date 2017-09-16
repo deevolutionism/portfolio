@@ -11,12 +11,15 @@
   "author": "Gentry Demchak",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.3.0",
     "cors": "^2.8.1",
     "express": "^4.14.0",
+    "mongoose": "^4.9.2",
     "p5": "^0.5.3",
     "react": "^15.3.0",
     "react-router": "^2.7.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

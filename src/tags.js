@@ -15,10 +15,10 @@ export default class Tagslist extends React.Component {
       //   <li className = "tag" key = {index}>{tag}</li>
       // });
       var tagItems = [];
-      this.props.tags.forEach((tag) => {
-        tagItems.push(<li className="tag">{tag}</li>)
+      this.props.tags.forEach((tag,index) => {
+        tagItems.push(<li className="tag" key={index}><p>{tag}</p></li>)
       });
-      console.log(tagItems);
+      
     }
 
     return (

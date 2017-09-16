@@ -3,15 +3,12 @@ import React, {Component} from "react";
 import ReactDom from "react-dom";
 import Segment from './segment.js';
 import Tagsmenu from './tagsmenu.js';
+import randomString from './utils/randomString'
 import $ from "jquery";
 
 var version = '0.0.0';
 var pageViews = 0;
 
-var onloadCallback = function() {
-    alert("grecaptcha is ready!");
-    grecaptcha.render()
-};
 
 class Index extends Component {
   constructor(props) {
@@ -22,7 +19,7 @@ class Index extends Component {
       allProjects: null,
       pageViews: 0,
       selectedTags:[
-        
+
       ]
     };
     this.getData = this.getData.bind(this);
@@ -30,6 +27,8 @@ class Index extends Component {
     this.handleUserSelect = this.handleUserSelect.bind(this);
     this.handleSort = this.handleSort.bind(this);
     this.handleTagSelect = this.handleTagSelect.bind(this);
+    this.getScrollY = this.getScrollY.bind(this);
+    this.storeScrollY = this.storeScrollY.bind(this);
   }
 
   getData() {
@@ -76,6 +75,7 @@ class Index extends Component {
   componentDidMount() {
     this.updatePageViews();
     this.getData();
+    this.getScrollY();
   }
 
   handleUserSelect(title){
@@ -152,7 +152,40 @@ class Index extends Component {
     });
   }
 
+  getScrollY(){
+    var last_known_scroll_position = 0;
+    var ticking = false;
+    let storeScrollY = this.storeScrollY
+
+
+    window.addEventListener('scroll', function(e) {
+      last_known_scroll_position = window.scrollY;
+      if (!ticking) {
+        // window.requestAnimationFrame(() => {
+        //   this.storeScrollY(last_known_scroll_position);
+          
+        //   ticking = false;
+        // });
+
+        window.requestAnimationFrame(storeScrollY(last_known_scroll_position,() => {ticking = false}))
+      }
+      ticking = true;
+    });
+    
+  }
+
+  storeScrollY(scroll_pos, callback) {
+    // update scroll data.
+    localStorage.setItem('scrollY', scroll_pos)
+    
+    this.setState({
+      scrollY: scroll_pos
+    })
+    return callback
+  }
+
   render() {
+
     var portfolioItems = [];
     if(this.state.projects != null){
       version = this.state.version;
@@ -161,7 +194,7 @@ class Index extends Component {
       for(var i = 0; i<this.state.projects.length;i++){
         console.log(this.state.projects[i].image);
         portfolioItems.push(
-          <Segment className = "segment" key = {this.state.projects[i].title}
+          <Segment className = "segment" key = {i}
             data={this.state.projects[i]}
             image={this.state.projects[i].image}
             title={this.state.projects[i].title}
@@ -170,6 +203,8 @@ class Index extends Component {
             views={this.state.projects[i].views}
             description={this.state.projects[i].description}
             handleUserSelect={this.handleUserSelect}
+            scrollY = {this.state.scrollY}
+            id={i}
           />
         );
       }
@@ -177,7 +212,8 @@ class Index extends Component {
 
     return (
       <div>
-      <h1>Gentry Demchak</h1>
+      <img className="headshot" src="assets/headshot.png"/>
+      <h1 className="name">Gentry Demchak</h1>
         <ul>
           <li><a href="https://github.com/deevolutionism">Github</a></li>
           <li><a href="https://twitter.com/gdemchak17">Twitter</a></li>

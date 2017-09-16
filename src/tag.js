@@ -49,7 +49,7 @@ export default class Tag extends React.Component {
     var cn = `sort_button tag ${this.status()}`;
     return (
       <div className={this.status()} onClick={this.handleTagSelect}>
-       <li className={cn}>{this.props.tagname}</li>
+       <li className={cn}><p>{this.props.tagname}</p></li>
       </div>
     )
   }

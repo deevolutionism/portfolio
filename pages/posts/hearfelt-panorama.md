@@ -6,3 +6,8 @@ tags: 'production assistant'
 author: 'Gentry Demchak'
 image: '/images/heartfelt.png'
 ---
+
+I helped assemble and test an interactive installation for the Panorama music festival.
+
+
+

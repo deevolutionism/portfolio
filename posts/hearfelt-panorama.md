@@ -7,6 +7,7 @@ author: 'Gentry Demchak'
 image: '/images/heartfelt.png'
 ---
 
+## Heartfelt @ Panorama Music Festival NYC
 I helped assemble and test an interactive installation for the Panorama music festival.
 
 

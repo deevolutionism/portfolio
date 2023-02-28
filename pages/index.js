@@ -23,7 +23,7 @@ export default function Home({allPostsData}) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>👋 I'm a Front End Engineer.</p>
+        <p>👋 I&aposm a Front End Engineer.</p>
         <p>
           🌐 Find me on the internet: <a href="https://github.com/deevolutionism">Github</a>
         </p>
@@ -37,8 +37,7 @@ export default function Home({allPostsData}) {
               <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
-                {/* <Date dateString={date} /> */}
-                {date}
+                <Date dateString={date} />
               </small>
               <br />
               <Tags tags={tags} />

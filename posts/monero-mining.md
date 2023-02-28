@@ -6,3 +6,5 @@ tags: 'Cryptocurrency, CPU Mining, GPU Mining, XMR'
 author: 'Gentry Demchak'
 image: '/images/profile.jpg'
 ---
+
+## Mining Monero

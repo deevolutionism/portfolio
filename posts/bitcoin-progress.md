@@ -6,3 +6,5 @@ tags: 'Software Engineering, Python, AWS, Tweepy, Bots, Twitter'
 author: 'Gentry Demchak'
 image: '/images/bitcoin-progress.jpg'
 ---
+
+## Bitcoin Progress

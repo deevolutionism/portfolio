@@ -1,6 +1,6 @@
 ---
 title: 'Bitcoin Progress'
-date: '2020-01-01'
+date: '2019-01-01'
 description: 'Twitter bot that provides regular updates on the Bitcoin protocol progress toward the next subsidy halving event'
 tags: 'Python, AWS Lambda, Tweepy, Bots, Twitter, Bitcoin'
 author: 'Gentry Demchak'

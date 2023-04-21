@@ -15,7 +15,7 @@ The Bitcoin protocol was initilized to subsidize[^1] miners 50 bitcoin for every
 
 ![formula for bitcoin supply](/images/bitcoin-supply-formula.webp)
 
-### Architecure for the bot
+### Architecture for the bot
 A few things were needed for this bot to function:
 -  Access to the [Twitter API](https://developer.twitter.com/en/docs/twitter-api), creation of a twitter account and app, along with keys / tokens / secrets for auth so the bot can post updates to twitter.
 - A way to check the current block height so we can derive our progress toward the next subsidy halving. For that we can simply and freely poll https://blockchain.info/q/getblockcount from the [blockchain.com Query API](https://www.blockchain.com/explorer/api/q).

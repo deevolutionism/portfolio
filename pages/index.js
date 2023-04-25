@@ -31,10 +31,11 @@ export default function Home({allPostsData}) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>👋 I&apos;m a Front End Engineer.</p>
+        <p>👋 I&apos;m a Generalist</p>
         <p>
-          🌐 Find me on the internet: <a href="https://github.com/deevolutionism">Github</a>
+          🌐 <a href="https://github.com/deevolutionism">Github</a>
         </p>
+        <p>I enjoy researching and playing around with various technologies, tools, and software.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>

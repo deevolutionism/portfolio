@@ -10,7 +10,7 @@ export default function Post({ postData }) {
   return (
     <Layout>
       <Head>
-        <title>postData.title</title>
+        <title>{postData.title}</title>
       </Head>
       <article>
         <Image src={postData.image} className={utilStyles.imageHeader} title="post image header" alt="image" width="600" height="300"/>

@@ -5,16 +5,16 @@ import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
 const name = 'Gentry Demchak'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Gentry Demchak'
 
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>"/>
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Gentry Demchak's portfolio site"
         />
         <meta
           property="og:image"

@@ -4,7 +4,7 @@ date: '2021-09-17'
 description: 'NFT social impact marketplace concept for retroactively funding project development'
 tags: 'software engineering, product design, web3, DAO, NFT, EthGlobal, Hackathon'
 author: 'Gentry Demchak'
-image: '/images/citizen-dao-citizenship.gif'
+image: '/images/citizen-dao-citizenship.jpg'
 ---
 
 ## CitizenDAO Impact Protocol

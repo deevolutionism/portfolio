@@ -4,7 +4,7 @@ date: '2017-08-08'
 description: 'Production Assistant for Heartfelt, an interactive experience by Ekene Ijeoma'
 tags: 'production assistant'
 author: 'Gentry Demchak'
-image: '/images/heartfelt.png'
+image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/heartfelt.png'
 ---
 
 ### Team
@@ -12,7 +12,7 @@ image: '/images/heartfelt.png'
 
 ### Installation
 
-![Installing at Panorama Fest](/images/heartfelt-light.jpg)
+![Installing at Panorama Fest](https://gentrydemchak-portfolio-content.s3.amazonaws.com/heartfelt-lights.jpg)
 
 I joined Ekene Ijeoma as a production assistant for an early verison of Heartfelt, an interactive experience showcased at the 2019 Panorama Music Festival. I was on the team responsible for installation of the project, which included assembly/disasembly of hardware, wiring, flashing microcontrollers, and testing. It took about a month of work to manufacture and test the assembly, and then about 2-3 days to assemle the project on site at the festival! 
 

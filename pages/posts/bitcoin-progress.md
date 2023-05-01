@@ -4,7 +4,7 @@ date: '2019-01-01'
 description: 'Twitter bot that provides regular updates on the Bitcoin protocol progress toward the next subsidy halving event'
 tags: 'Python, AWS Lambda, Tweepy, Bots, Twitter, Bitcoin'
 author: 'Gentry Demchak'
-image: '/images/bitcoin-progress.jpg'
+image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/bitcoin-progress.jpg'
 ---
 
 ### A twitter bot that posts regular updates about the quadrennial block subsidy halvening event.
@@ -13,7 +13,7 @@ I created this twitter bot to help educate folks about Bitcoins programatic supp
 
 The Bitcoin protocol was initilized to subsidize[^1] miners 50 bitcoin for every block they found. The subsidy is halved every 210,000 blocks that are mined until it reaches 0. This simple algorithm is how Bitcoin will eventually arrive at the 21 million supply cap.
 
-![formula for bitcoin supply](/images/bitcoin-supply-formula.webp)
+![formula for bitcoin supply](https://gentrydemchak-portfolio-content.s3.amazonaws.com/bitcoin-supply-formula.webp)
 
 ### Architecture for the bot
 A few things were needed for this bot to function:

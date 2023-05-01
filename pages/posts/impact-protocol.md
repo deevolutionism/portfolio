@@ -4,13 +4,25 @@ date: '2021-09-17'
 description: 'NFT social impact marketplace concept for retroactively funding project development'
 tags: 'software engineering, product design, web3, DAO, NFT, EthGlobal, Hackathon'
 author: 'Gentry Demchak'
-image: '/images/citizen-dao-citizenship.jpg'
+image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/fork-the-un-citizen-dao.jpg'
 ---
 
 ## CitizenDAO Impact Protocol
 
 ### NFT social impact marketplace concept for funding project development
 ---
+
+1. [Joining a Hackathon](#joining-a-hackathon)
+2. [The Team](#the-team)
+3. [The Big Idea](#the-big-idea)
+4. [The Dao](#the-dao)
+5. [The Hackathon](#the-hackathon)
+6. [My Goals](#my-goals)
+7. [Pitching the Project](#pitching-the-project)
+8. [Outcomes](#outcomes)
+9. [Retrospective](#retrospective)
+10. [Post Involvement](#post-involvement)
+11. [Shoutout](#shoutout)
 
 ### Joining a Hackathon
 
@@ -20,13 +32,13 @@ To answer that question, I decided to join a Hackathon! I stumbled upon the [Eth
 
 
 ### The Team
-[Brennan Hodge](https://github.com/BrennenHodge) - Founder of CitizenDAO (USA)
-[Megan Janas](https://github.com/MeganJanas-CH) - Co-Founder and COO (USA)
-[James Cunningham](https://github.com/james-c) - Blockchain Engineer (UK)
-[Sianliu](https://github.com/sianliu) - DevOps Engineer (Singapore)
-[Gentry Demchak](https://github.com/deevolutionism) - Frontend Engineer (USA)
-[Bolaji Ahmad](https://github.com/bolajahmad) - Fullstack engineer (Nigeria)
-[Ian Sagstetter](https://twitter.com/iansagstette?s=20) - Advisor (USA)
+- [Brennan Hodge](https://github.com/BrennenHodge) - Founder of CitizenDAO (USA)
+- [Megan Janas](https://github.com/MeganJanas-CH) - Co-Founder and COO (USA)
+- [James Cunningham](https://github.com/james-c) - Blockchain Engineer (UK)
+- [Sianliu](https://github.com/sianliu) - DevOps Engineer (Singapore)
+- [Gentry Demchak](https://github.com/deevolutionism) - Frontend Engineer (USA)
+- [Bolaji Ahmad](https://github.com/bolajahmad) - Fullstack engineer (Nigeria)
+- [Ian Sagstetter](https://twitter.com/iansagstette?s=20) - Advisor (USA)
 
 ### The big idea
 
@@ -49,7 +61,7 @@ While great in theory, SIBs are designed with a poor economic incentive model. F
 
 We at Citizen DAO believe Social Impact Bonds can be much better than they are.
 
-Our bonds are ERC-1155 non-fungible tokens. Bonds are unique financial assets that fund projects in the following categories of health, housing, education, climate, finance, & governance.
+Our bonds are [ERC-1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) non-fungible tokens. Bonds are unique financial assets that fund projects in the following categories of health, housing, education, climate, finance, & governance.
 
 Citizen DAO members will curate, refine, & decide on which projects get funding. Each bond can be minted with any amount of ETH. Yield is in CDAO, which is the governance & utiliity token of Citizen DAO.
 
@@ -60,13 +72,11 @@ The project was registed as a [Wyoming DAO](https://sos.wyo.gov/Business/Docs/DA
 
 ### The hackathon
 
-Hackathons are crazy and a web3/crypto hackathon is even crazier! There was an absolute firehose of information - introductions, team building, project demos, technical tutorials, tools, prizes, etc. I recommend taking a look at the youtube playlist for the event (glad they organized their content!) which you can find [here:](https://youtube.com/playlist?list=PLXzKMXK2aHh6j8eOCCVd9vNECFdr-VnF-) and [here](https://www.youtube.com/playlist?list=PLXzKMXK2aHh7aUiWbxZO9Rf2eQCH-wcFg). For me and the goals of this project, I followed a few tutorials. The most important and valuable one for a web3 noobie like myself was the tutorial given by [Austin Griffith]()
+Hackathons are crazy and a web3/crypto hackathon is even crazier! There was an absolute firehose of information - introductions, team building, project demos, technical tutorials, tools, prizes, etc. I recommend taking a look at the youtube playlist for the event (glad they organized their content!) which you can find [here:](https://youtube.com/playlist?list=PLXzKMXK2aHh6j8eOCCVd9vNECFdr-VnF-) and [here](https://www.youtube.com/playlist?list=PLXzKMXK2aHh7aUiWbxZO9Rf2eQCH-wcFg). For me and the goals of this project, I followed a few tutorials. The most important and valuable one for a web3 noobie like myself was the scaffold-eth tutorial given by [Austin Griffith](https://www.youtube.com/watch?v=8P1mIlKGFMs) which provided an overview of how to use javascript tooling to quickly bootstrap a web3 project. It utilized libraries such as web3.js, hardhat, a generative webui that shows you inputs/outputs for whatever smart contract you are developing, and tons of examples for things like making an NFT, multisig, smart contract dev, streaming eth, etc.
 
 ### My goals
 
 Win some prize money! Ship a prototype or MVP of the project. Learn some new tools and concepts. Engage with the community. Have fun!
-
-### Building a prototype
 
 ### Pitching the project
 
@@ -76,12 +86,35 @@ Checkout our submission to the Chainlink hackathon on devpost: https://devpost.c
 
 ### Outcomes
 
-We shipped a prototype, pitched the idea to the judges, and won some prize money from Compound Finance, Skynet, and Chainlink! We didn't change the world in any meaningful way - only so much you can achieve in a months time 😂 but I learned ALOT about the web3 ecosystem, the problems, the projects, the people. There is still **SO SO MUCH** to learn, an overwhelming amount tbh and the space gets bigger everyday! I think a big factor in the shear volume of activity is the fact that it is a global community, built on the foundations of a global opensource permissionless protocal - literally anyone with an internet connection can get involved. I'm excited to be on the wild crypto journey and I'm looking forward to seeing it continue to grow.
+We shipped a prototype, pitched the idea to the judges, and won some prize money from Compound Finance, Skynet, and Chainlink! I learned ALOT about the web3 ecosystem, the problems, the projects, the people. There is still **SO SO MUCH** to learn, an overwhelming amount tbh and the space gets bigger everyday! Literally anyone with an internet connection and a brain can get involved. I'm excited to be on the wild crypto journey and I'm looking forward to seeing the space continue to grow and mature.
 
 ### Retrospective
 
--
+#### What went well?
+- We had interesting discussions about how to design a DAO
+- We shipped a prototype (although it was mostly presentational and not functional)
+- We won some prize money! (Compound Finance, Skynet, Chainlink)
+- We learned a lot about the web3 ecosystem and the tools that can be leveraged. We explored streaming money, NFTs, DAOs, smart contract development, decentralized hosting with skynet and arweave.
+- We had a test partner project based in guatemala that we aimed to get funding for as a pilot proof of concept.
 
-### What's next?
+#### What didn't go well?
+- The prototype could have been functional, but we didn't have the technical expertise to build it out in the amount of time we had.
+- I think the [Gitcoin grant program](https://bounties.gitcoin.co/grants) and [Mirror.xyz](https://mirror.xyz/) more or less accomplishes most of the things we set out to do. Namely - funding public goods projects. If a project wants to get funding they can use both of those platforms to raise money! We were trying to build a platform that was more currated, selecting only high quality projects or projects selected by the community, but there were alot of challenges to that as well. For example, how do you define "high quality" or "community selected"? How can we trust that the community can make high quality selections and not game the system and benefit directly from voting manipulation?
+- We weren't sure how to best bootstrap the CitizenDAO token. One of the major barrier to entry for any token is liquidity. Anyone can create a token, but unless there is ample liquidity provided in a uniswap pool for instance, it has no value. Who is going to provide the USDC side of that liquidity? its a big risk. We could have used the prize money to bootstrap liquidity, but it was probably not enough.
+- We could have spent more time exploring the existing solution space to make sure we weren't simply reinventing the wheel.
 
-Let me know if you want help building / iterating on a web3 project! Shoot me a message on twitter @deevolutionism
+### Post involvement
+
+Just prior to landing a contracting job with GAP, the team had been working on launching a fundraise using the Mirror.xyz platform. The idea was to sell a few different founding NFT tiers to gauge interest in the project and see if the project could bootstrap liquidty for the CitizenDAO token.
+
+For that I designed some NFT cards with Blender that unfortunately never had the chance to be used - I was just too busy at the time interviewing and subsquently onboarding at my new gig. But you can see the iterations here:
+
+![NFT card design](https://gentrydemchak-portfolio-content.s3.amazonaws.com/citizendao-citizenship-pass.JPG)
+
+![NFT card design](https://gentrydemchak-portfolio-content.s3.amazonaws.com/citizenship-nft-2.png)
+
+![NFT card design](https://gentrydemchak-portfolio-content.s3.amazonaws.com/citizendao-nft-draft-1.png)
+
+### Shoutout
+
+Lastly, I want to give Brennan a shoutout for being an awesome founder. He's intelligent, motivated, and very down to earth/easy to work with entreprenuer and I believe he'll be able to continue iterating or pivoting onto the next project. Definitely if you are interested in contributing to this project or anything else he's working on, I encourage you to reach out to him on twitter: https://twitter.com/BrennenHodge

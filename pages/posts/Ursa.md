@@ -4,7 +4,7 @@ date: '2020-01-01'
 description: 'MIT Reality Virtually Hackathon submission'
 tags: 'Software Engineering, Unity, Vuforia, AR, 3D Animation, C#, Hackathon'
 author: 'Gentry Demchak'
-image: '/images/reality-virtually-hackathon.png'
+image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/whats-in-store-ursa.JPG'
 ---
 
 

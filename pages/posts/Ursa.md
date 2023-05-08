@@ -2,7 +2,7 @@
 title: 'Ursa - MIT Reality Virtually Hackathon'
 date: '2020-01-01'
 description: 'MIT Reality Virtually Hackathon submission'
-tags: 'Software Engineering, Unity, Vuforia, AR, 3D Animation, C#, Hackathon'
+tags: 'Product Design, Unity, Vuforia, AR, 3D Animation, C#, Hackathon'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/whats-in-store-ursa.JPG'
 ---

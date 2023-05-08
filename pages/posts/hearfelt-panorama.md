@@ -2,7 +2,7 @@
 title: 'Heartfelt Panorama'
 date: '2017-08-08'
 description: 'Production Assistant for Heartfelt, an interactive experience by Ekene Ijeoma'
-tags: 'production assistant'
+tags: 'Production Assistant, Interactive Installation, Hardware Assembly'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/heartfelt.png'
 ---

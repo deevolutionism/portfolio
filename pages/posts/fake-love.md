@@ -1,8 +1,8 @@
 ---
-title: 'Bell Labs: Future X'
+title: 'Nokia Bell Labs: Future X'
 date: '2018-11-05'
 description: 'Multiscreen interactive dashboard built for Nokia Bell Labs'
-tags: 'SVG.js, Javascript, Web Application'
+tags: 'SVG.js, Javascript, Web Application, Freelance'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/bell-labs-future-x-screen.jpg'
 ---

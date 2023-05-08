@@ -2,7 +2,7 @@
 title: 'CitizenDAO Impact Protocol'
 date: '2021-09-17'
 description: 'NFT social impact marketplace concept for retroactively funding project development'
-tags: 'software engineering, product design, web3, DAO, NFT, EthGlobal, Hackathon'
+tags: 'SPA, Product Design, Web3, DAO, NFT, EthGlobal, Hackathon'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/fork-the-un-citizen-dao.jpg'
 ---

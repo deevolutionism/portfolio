@@ -2,7 +2,7 @@
 title: 'WeWork Meeting Room Booking Kiosk App'
 date: '2016-07-20'
 description: 'A kiosk app for conveniently booking WeWork meeting rooms'
-tags: 'React, Javascript, RESTful API, Node, Express, Internship'
+tags: 'SPA, React, Javascript, RESTful API, Node, Express, Internship'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/we-work-banner.jpg'
 ---

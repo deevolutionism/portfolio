@@ -15,7 +15,7 @@ The Next config uses `output: 'export'` and `trailingSlash: true`, so routes are
 - GitHub deploy role: `arn:aws:iam::901712715767:role/github-actions-portfolio-deploy`
 - GitHub environment: `production`
 
-DNS for `gentrydemchak.com` has not been cut over yet. The current apex record still points to GitHub Pages.
+DNS for `gentrydemchak.com` and `www.gentrydemchak.com` has been cut over to this CloudFront distribution.
 
 ## GitHub Variables
 
@@ -114,22 +114,21 @@ function handler(event) {
 
 This distribution uses the private S3 REST origin with Origin Access Control and the rewrite function above.
 
-## DNS Cutover
+## DNS
 
-After testing `https://d51kfvr58otrx.cloudfront.net/`, cut over the apex in Route 53 by replacing the current GitHub Pages record:
+Route 53 now has CloudFront alias records for the apex and `www` host:
+
+```text
+A    gentrydemchak.com     -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
+AAAA gentrydemchak.com     -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
+A    www.gentrydemchak.com -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
+AAAA www.gentrydemchak.com -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
+```
+
+The previous GitHub Pages record was:
 
 ```text
 A gentrydemchak.com -> 185.199.108.153
 ```
 
-with an `A` Alias record:
-
-```text
-A gentrydemchak.com -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
-```
-
-Optionally add:
-
-```text
-A www.gentrydemchak.com -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
-```
+To roll back, replace the apex alias with that GitHub Pages `A` record and remove or repoint the `www` records.

@@ -11,6 +11,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'gentrydemchak-portfolio-content.s3.amazonaws.com',
+        port: '',
+        pathname: '/*',
+      },
+      {
+        protocol: 'https',
         hostname: 'ipfs.io',
         port: '',
         pathname: '/ipfs/*',

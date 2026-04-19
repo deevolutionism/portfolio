@@ -5,6 +5,14 @@ import PostList from '../components/PostList'
 import utilStyles from '../styles/utils.module.css'
 import { getPaginatedPostsData } from '../lib/posts'
 
+// interface PostData {
+//   id: string; date: string; title: string; image: string; tags:string[];
+// }
+
+// interface AllPostData {
+//   allPostsData: PostData[]
+// }
+
 export async function getStaticProps() {
   const { posts, pagination } = getPaginatedPostsData()
 
@@ -23,10 +31,11 @@ export default function Home({ posts, pagination }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>👋 I&aposm a Front End Engineer.</p>
+        <p>👋 I&apos;m a Generalist</p>
         <p>
-          🌐 Find me on the internet: <a href="https://github.com/deevolutionism">Github</a>
+          🌐 <a href="https://github.com/deevolutionism">Github</a>
         </p>
+        <p>I enjoy researching and playing around with various technologies, tools, and software.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>

@@ -1,3 +1,4 @@
+import {Tag} from "./Tag"
 interface TagsProps {
   tags: string[]
 }
@@ -5,7 +6,7 @@ interface TagsProps {
 export const Tags = ({tags}:TagsProps) => {
   return (
     <small>
-      {tags.map( tag => <i key={tag}>{tag}</i>)}
+      {tags.map( tag => <Tag key={tag} tag={tag} />)}
     </small>
   )
 }

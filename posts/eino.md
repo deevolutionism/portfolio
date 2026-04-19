@@ -4,7 +4,7 @@ date: '2020-01-01'
 description: 'Freelance gig for EINO'
 tags: 'Front End Engineering, Freelance'
 author: 'Gentry Demchak'
-image: '/images/profile.jpg'
+image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/profile.jpg'
 ---
 
 # EINO

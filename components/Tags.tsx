@@ -1,5 +1,5 @@
 interface TagsProps {
-  tags: []
+  tags: string[]
 }
 
 export const Tags = ({tags}:TagsProps) => {

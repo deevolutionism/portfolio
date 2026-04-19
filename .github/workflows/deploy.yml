@@ -1,0 +1,68 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    name: Build and deploy static site
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: HUSKY=0 npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Verify static export
+        run: test -d out
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Upload pages and mutable assets
+        run: >
+          aws s3 sync out/ s3://${{ vars.S3_BUCKET }}/
+          --delete
+          --exclude "_next/static/*"
+          --cache-control "public, max-age=0, must-revalidate"
+
+      - name: Upload immutable Next assets
+        run: >
+          aws s3 sync out/_next/static/ s3://${{ vars.S3_BUCKET }}/_next/static/
+          --delete
+          --cache-control "public, max-age=31536000, immutable"
+
+      - name: Invalidate CloudFront
+        run: >
+          aws cloudfront create-invalidation
+          --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+          --paths "/*"

@@ -1,22 +1,22 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Layout, { siteTitle } from '../components/layout'
-import {Tags} from '../components/Tags'
+import Pagination from '../components/Pagination'
+import PostList from '../components/PostList'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts';
-import Link from "next/link";
-import Date from "../components/date"
+import { getPaginatedPostsData } from '../lib/posts'
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const { posts, pagination } = getPaginatedPostsData()
+
   return {
     props: {
-      allPostsData,
+      pagination,
+      posts,
     },
-  };
+  }
 }
 
-export default function Home({allPostsData}) {
+export default function Home({ posts, pagination }) {
   return (
     <Layout home>
       <Head>
@@ -30,20 +30,8 @@ export default function Home({allPostsData}) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title, image, tags }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Image src={image} className={utilStyles.imageHeader} title="post image header" alt="image" width="600" height="300"/>
-              <Link href={`/posts/${id}`}>{title}</Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-              <br />
-              <Tags tags={tags} />
-            </li>
-          ))}
-        </ul>
+        <PostList posts={posts} />
+        <Pagination pagination={pagination} />
       </section>
     </Layout>
   )

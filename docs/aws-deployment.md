@@ -4,18 +4,33 @@ This site deploys as a static Next.js export from GitHub Actions to S3, then inv
 
 The Next config uses `output: 'export'` and `trailingSlash: true`, so routes are emitted as directory indexes such as `posts/example/index.html`.
 
+## Created Resources
+
+- AWS account: `901712715767`
+- Hosted zone: `Z0521140QGVIRF46HEL0`
+- S3 bucket: `gentrydemchak-portfolio-site`
+- CloudFront distribution: `E3QAVS6FHUP3ED`
+- CloudFront domain: `d51kfvr58otrx.cloudfront.net`
+- ACM certificate: `arn:aws:acm:us-east-1:901712715767:certificate/4f5217e2-28a7-4f5e-b656-3abee0eee151`
+- GitHub deploy role: `arn:aws:iam::901712715767:role/github-actions-portfolio-deploy`
+- GitHub environment: `production`
+
+DNS for `gentrydemchak.com` has not been cut over yet. The current apex record still points to GitHub Pages.
+
 ## GitHub Variables
 
-Create a `production` environment in GitHub and add these environment variables:
+The `production` environment in GitHub has these environment variables:
 
-- `AWS_ROLE_TO_ASSUME`: IAM role ARN that GitHub Actions can assume with OIDC.
-- `AWS_REGION`: AWS region for the S3 bucket, for example `us-east-1`.
-- `S3_BUCKET`: S3 bucket name that CloudFront serves from.
-- `CLOUDFRONT_DISTRIBUTION_ID`: CloudFront distribution ID.
+- `AWS_ROLE_TO_ASSUME`: `arn:aws:iam::901712715767:role/github-actions-portfolio-deploy`
+- `AWS_REGION`: `us-east-1`
+- `S3_BUCKET`: `gentrydemchak-portfolio-site`
+- `CLOUDFRONT_DISTRIBUTION_ID`: `E3QAVS6FHUP3ED`
+
+The environment is restricted to deployments from the `main` branch.
 
 ## IAM Trust Policy
 
-Replace `OWNER`, `REPO`, and `AWS_ACCOUNT_ID` before attaching this trust policy to the deploy role.
+The deploy role uses this trust policy.
 
 ```json
 {
@@ -24,13 +39,13 @@ Replace `OWNER`, `REPO`, and `AWS_ACCOUNT_ID` before attaching this trust policy
     {
       "Effect": "Allow",
       "Principal": {
-        "Federated": "arn:aws:iam::AWS_ACCOUNT_ID:oidc-provider/token.actions.githubusercontent.com"
+        "Federated": "arn:aws:iam::901712715767:oidc-provider/token.actions.githubusercontent.com"
       },
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
           "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-          "token.actions.githubusercontent.com:sub": "repo:OWNER/REPO:environment:production"
+          "token.actions.githubusercontent.com:sub": "repo:deevolutionism/portfolio:environment:production"
         }
       }
     }
@@ -40,7 +55,7 @@ Replace `OWNER`, `REPO`, and `AWS_ACCOUNT_ID` before attaching this trust policy
 
 ## IAM Permissions Policy
 
-Replace `S3_BUCKET`, `AWS_ACCOUNT_ID`, and `CLOUDFRONT_DISTRIBUTION_ID`.
+The deploy role uses this inline permissions policy.
 
 ```json
 {
@@ -51,7 +66,7 @@ Replace `S3_BUCKET`, `AWS_ACCOUNT_ID`, and `CLOUDFRONT_DISTRIBUTION_ID`.
       "Action": [
         "s3:ListBucket"
       ],
-      "Resource": "arn:aws:s3:::S3_BUCKET"
+      "Resource": "arn:aws:s3:::gentrydemchak-portfolio-site"
     },
     {
       "Effect": "Allow",
@@ -60,14 +75,14 @@ Replace `S3_BUCKET`, `AWS_ACCOUNT_ID`, and `CLOUDFRONT_DISTRIBUTION_ID`.
         "s3:GetObject",
         "s3:PutObject"
       ],
-      "Resource": "arn:aws:s3:::S3_BUCKET/*"
+      "Resource": "arn:aws:s3:::gentrydemchak-portfolio-site/*"
     },
     {
       "Effect": "Allow",
       "Action": [
         "cloudfront:CreateInvalidation"
       ],
-      "Resource": "arn:aws:cloudfront::AWS_ACCOUNT_ID:distribution/CLOUDFRONT_DISTRIBUTION_ID"
+      "Resource": "arn:aws:cloudfront::901712715767:distribution/E3QAVS6FHUP3ED"
     }
   ]
 }
@@ -95,4 +110,26 @@ function handler(event) {
 
   return request;
 }
+```
+
+This distribution uses the private S3 REST origin with Origin Access Control and the rewrite function above.
+
+## DNS Cutover
+
+After testing `https://d51kfvr58otrx.cloudfront.net/`, cut over the apex in Route 53 by replacing the current GitHub Pages record:
+
+```text
+A gentrydemchak.com -> 185.199.108.153
+```
+
+with an `A` Alias record:
+
+```text
+A gentrydemchak.com -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
+```
+
+Optionally add:
+
+```text
+A www.gentrydemchak.com -> E3QAVS6FHUP3ED / d51kfvr58otrx.cloudfront.net
 ```

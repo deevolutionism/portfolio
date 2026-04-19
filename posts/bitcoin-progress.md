@@ -19,7 +19,7 @@ The Bitcoin protocol was initilized to subsidize[^1] miners 50 bitcoin for every
 A few things were needed for this bot to function:
 -  Access to the [Twitter API](https://developer.twitter.com/en/docs/twitter-api), creation of a twitter account and app, along with keys / tokens / secrets for auth so the bot can post updates to twitter.
 - A way to check the current block height so we can derive our progress toward the next subsidy halving. For that we can simply and freely poll https://blockchain.info/q/getblockcount from the [blockchain.com Query API](https://www.blockchain.com/explorer/api/q).
-- A service to post from. [AWS Lambda](https://aws.amazon.com/lambda/) serverless is a fantastic option as this bot isn't doing any heavy or frequent computation that would warrant an entire server instance. Plus it's free for the amount of usage this bot requires! 
+- A service to post from. [AWS Lambda](https://aws.amazon.com/lambda/) serverless is a fantastic option as this bot isn't doing any heavy or frequent computation that would warrant an entire server instance. Plus it's free for the amount of usage this bot requires!
 - A language and library to interact with the Twitter API: Python and [Tweepy](https://www.tweepy.org/) are easy to use and well documented.
 - Finally, a trigger that invokes the Lambda function on a regular interval. For simplicity, Amazon EventBridge can be used to call a service based on some simple rules.
 
@@ -33,16 +33,16 @@ A few things were needed for this bot to function:
 5. Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 6. Setup a git repository for the project.
 7. Create a local python virtualenv.
-8. ✨ [Write code!](https://github.com/deevolutionism/bitcoin-halving-progress-bar) ✨ 
+8. ✨ [Write code!](https://github.com/deevolutionism/bitcoin-halving-progress-bar) ✨
 9. Create a deployment package by zipping up the python function and all package dependencies.
-10. Deploy package to the lambda function utilizing AWS CLI [update-function-code](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html) 
+10. Deploy package to the lambda function utilizing AWS CLI [update-function-code](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html)
 11. Setup EventBridge trigger to invoke the Lambda function every 5 minutes. (bitcoin blocks are mined, on average, every 10 minutes, so we need to check for a new block height at *least* every 10 minutes). If the computed value is different than the last time we checked, then we can post an update to twitter!
 12. 🤑 Profit
 
 ### Result
 A bot that publishes regular updates on progress toward the next bitcoin subsidy halvening!
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Subsidy Era: 4<br>Block Subsidy: ₿6.25<br>Blocks Remaining: 65098<br>Estimated 452 days until <a href="https://twitter.com/hashtag/BitcoinHalvening?src=hash&amp;ref_src=twsrc%5Etfw">#BitcoinHalvening</a><br>██████████░░░░░ 69%<a href="https://twitter.com/hashtag/Bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#Bitcoin</a></p>&mdash; BITCOIN HALVENING (@BitcoinProgress) <a href="https://twitter.com/BitcoinProgress/status/1621595344835416086?ref_src=twsrc%5Etfw">February 3, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Subsidy Era: 4<br>Block Subsidy: ₿6.25<br>Blocks Remaining: 65098<br>Estimated 452 days until <a href="https://twitter.com/hashtag/BitcoinHalvening?src=hash&amp;ref_src=twsrc%5Etfw">#BitcoinHalvening</a><br>██████████░░░░░ 69%<a href="https://twitter.com/hashtag/Bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#Bitcoin</a></p>&mdash; BITCOIN HALVENING (@BitcoinProgress) <a href="https://twitter.com/BitcoinProgress/status/1621595344835416086?ref_src=twsrc%5Etfw">February 3, 2023</a></blockquote>
 
 #### Improvements
 

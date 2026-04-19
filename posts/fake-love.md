@@ -9,7 +9,7 @@ image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/bell-labs-futur
 
 I had the opportunity to help the team at Fake Love (aquired by NYT) finalize development for a multiscreen interactive dashboard built to showcase Nokia Bell Labs Future X concept.
 
-The experience included a multi screen display and a web app that allowed users to interact and configure various 5G network technologies. The app would display the affect on KPIs (key performance indicators) in real time. 
+The experience included a multi screen display and a web app that allowed users to interact and configure various 5G network technologies. The app would display the affect on KPIs (key performance indicators) in real time.
 
 I was responsible for developing the custom charts and graphs on the right-hand pannel that reacted to the user defined network configurations. I built the charts using SVG.js, building a system for dynamically generating the charts based on the data provided by the backend. The system included features such as animating data transitions, custom legend, and styles.
 
@@ -26,4 +26,3 @@ I was responsible for developing the custom charts and graphs on the right-hand 
 
 > "First they’ll sit down in a futuristic network control center and see what tweaks can be made to change their productivity outcomes. Then, they’ll virtually tour a simulated factory floor that harnesses industrial-IoT, distributed-cloud, augmented-intelligence (AI), augmented-reality, virtual-reality and high-performance networking, including advanced LTE and 5G."
 -- Source: [njtechweekly](https://njtechweekly.com/at-bell-labs-in-murray-hill-the-future-of-industrial-automation-is-all-about-the-network/)
-

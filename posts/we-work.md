@@ -42,7 +42,7 @@ Some major components of the initial prototype app that I had to develop:
 ![WeWork Booking Kiosk App](https://gentrydemchak-portfolio-content.s3.amazonaws.com/we-work-kiosk-6+(2).jpg)
 *Reservation*
 
-This was a great project to work on and I learned a lot about React, Javascript, and RESTful API's. Althought the internship was relatively short 2-3 months - we had also discussed some interesting ideas for future iterations, features, and enhacements for the app that would have been nice to continue developing/exploring such as: 
+This was a great project to work on and I learned a lot about React, Javascript, and RESTful API's. Althought the internship was relatively short 2-3 months - we had also discussed some interesting ideas for future iterations, features, and enhacements for the app that would have been nice to continue developing/exploring such as:
 1. Adding a RFC scanner to the app to allow WeWork members to quickly and convieniently log in to the app and book a room.
-2. Add transitions and animations to the app to make it more engaging and friendly to use. 
+2. Add transitions and animations to the app to make it more engaging and friendly to use.
 3. Deploying a live version of the kiosk app to a tablet in a WeWork office to get feedback from members and iterate on the design and functionality.

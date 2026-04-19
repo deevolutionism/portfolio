@@ -1,3 +1,3 @@
-export const Tag = ({tag}:{tag:string}):JSX.Element => (
+export const Tag = ({tag}:{tag:string}) => (
   <i>{tag}</i>
 )

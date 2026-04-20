@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio
+
+This is a static [Next.js](https://nextjs.org/) portfolio site. Blog/project posts live in `posts/` as Markdown files and deploy to AWS S3 + CloudFront through GitHub Actions.
 
 ## Getting Started
 
@@ -6,33 +8,90 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Post Drafts
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Add `draft: true` to a post's front matter to keep it out of generated list pages, pagination, and post routes:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```md
+---
+title: 'Work in Progress'
+date: '2026-04-19'
+draft: true
+---
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Remove the flag or set `draft: false` when the post is ready to publish.
 
-## Learn More
+## Image Assets
 
-To learn more about Next.js, take a look at the following resources:
+Use `content-assets/` as a local staging folder for portfolio images and other post media. The folder exists in git, but its media files are ignored so large assets do not get committed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Add files locally:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+cp ~/Desktop/project-screenshot.webp content-assets/project-screenshot.webp
+```
 
-## Deploy on Vercel
+Upload them to the content S3 bucket:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run assets:upload
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The upload script preprocesses images into `.content-assets-processed/` before syncing them to S3. Processed files keep the same relative path and extension, so Markdown references stay stable while uploaded objects are resized and compressed.
+
+Defaults:
+
+- Max width: `612px`
+- Quality for JPEG/WebP/AVIF/TIFF: `82`
+- PNGs: lossless compression
+- Output cache: `.content-assets-processed/.manifest.json`
+
+The cache manifest is keyed by source file contents and processing settings, so unchanged images are reused instead of reprocessed on every upload.
+
+To preprocess without uploading:
+
+```bash
+npm run assets:process
+```
+
+The upload script uses `AWS_PROFILE=deploy` by default, syncs to `s3://gentrydemchak-portfolio-content/`, makes uploaded objects publicly readable, and prints Markdown references plus their public URLs.
+
+In posts, prefer referencing the local content asset path:
+
+```md
+---
+image: 'content-assets/project-screenshot.webp'
+---
+
+![Project screenshot](content-assets/project-screenshot.webp)
+```
+
+At build time, `content-assets/project-screenshot.webp` is emitted as `https://gentrydemchak-portfolio-content.s3.amazonaws.com/project-screenshot.webp`.
+
+Prefer new filenames when replacing images, for example `project-screenshot-v2.webp`, because uploaded assets use long-lived browser caching.
+
+You can override the defaults when needed:
+
+```bash
+AWS_PROFILE=deploy ASSET_BUCKET=gentrydemchak-portfolio-content ASSET_MAX_WIDTH=2000 ASSET_QUALITY=88 npm run assets:upload
+```
+
+## Mermaid Diagrams
+
+Posts can render Mermaid diagrams from fenced code blocks:
+
+````md
+```mermaid
+flowchart TD
+  A[Markdown post] --> B[Static Next build]
+  B --> C[S3 + CloudFront]
+  C --> D[Rendered diagram]
+```
+````
+
+Mermaid rendering runs in the browser only on post pages that include a Mermaid block.

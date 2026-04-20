@@ -1,7 +1,7 @@
 ---
 title: 'Ursa - MIT Reality Virtually Hackathon'
 date: '2020-01-01'
-description: 'MIT Reality Virtually Hackathon submission'
+description: 'AR app concept that helps shoppers quickly determine which products are good or bad for the environment.'
 tags: 'Product Design, Unity, Vuforia, AR, 3D Animation, C#, Hackathon'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/whats-in-store-ursa.JPG'

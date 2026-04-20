@@ -51,9 +51,17 @@
   color: #666;
 }
 
+.postDescription {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 0.25rem 0 0.35rem;
+}
+
 .imageHeader {
-  max-height: 5em;
+  height: 8em;
   object-fit: cover;
+  width: 100%;
 }
 
 .pagination {

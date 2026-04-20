@@ -5,6 +5,7 @@ description: 'Setting up a monero mining rig'
 tags: 'Cryptocurrency, CPU Mining, GPU Mining, XMR'
 author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/profile.jpg'
+draft: true
 ---
 
 ## Mining Monero

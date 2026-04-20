@@ -21,6 +21,12 @@ const nextConfig = {
         port: '',
         pathname: '/ipfs/*',
       },
+      {
+        protocol: 'https',
+        hostname: 'imgs.xkcd.com',
+        port: '',
+        pathname: '/comics/*',
+      },
     ],
   },
 }

@@ -29,7 +29,7 @@ I built this static SPA microsite as part of a campaign for TJmaxx. Built with V
 
 These are some of the high-impact, high visibility projects that I worked on. I also worked on a variety of smaller projects and tasks such as:
 
-- writing a node webscraper to update and reformat content from the legacy Citi group blog to the new Citi group blog
-- setup and configure a VR experience for a biotech company at a showcase event
-- built a couple quick/simple MEVN apps such as a questionnaire app, a simple stopwatch app, an app for detecting baldness, and a site showcasing recent internal promotions.
-- occational maintenance and updates to the Edelman Digital wordpress website.
+- Writing a node webscraper to update and reformat content from the legacy Citi group blog to the new Citi group blog.
+- Setup and configure a VR experience for a biotech company at a showcase event.
+- Built a couple quick/simple MEVN apps such as a questionnaire app, a simple stopwatch app, an app for detecting baldness, and a site showcasing recent internal promotions.
+- Occational maintenance and updates to the Edelman Digital wordpress website.

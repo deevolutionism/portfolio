@@ -7,7 +7,9 @@ author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/zola-music-official-music.JPG'
 ---
 
-Webflow site for ZOLA Music. Selected webflow as it is easy to make content updates with and I wanted to try it out to see what the hype was all about! Great for quickly building a static site within hours.
+Webflow site for my friend, ZOLA Music, created in a weekend. Selected Webflow for a couple reason:
+1. Easy for the artist to make content changes.
+2. Interested in trying out a new platform.
 
 ![zola music offical home page](https://gentrydemchak-portfolio-content.s3.amazonaws.com/zola-music-official-front-page.JPG)
 *Home Page*

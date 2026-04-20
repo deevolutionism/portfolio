@@ -7,6 +7,6 @@ author: 'Gentry Demchak'
 image: 'https://gentrydemchak-portfolio-content.s3.amazonaws.com/zola-logo-white+black+background.png'
 ---
 
-![ZOLA Music Official Logo]()
+![ZOLA Music Official Logo](https://gentrydemchak-portfolio-content.s3.amazonaws.com/zola-logo-white+black+background.png)
 
 ![Cables](https://gentrydemchak-portfolio-content.s3.amazonaws.com/cables-zola-logo.JPG)

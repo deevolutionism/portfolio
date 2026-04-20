@@ -24,8 +24,62 @@ a:hover {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.imageZoomFrame {
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.imageZoomButton {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: zoom-in;
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: inherit;
+  transform-origin: center;
+  transition: filter 160ms ease, transform 160ms ease;
+  width: 100%;
+}
+
+.imageZoomButton img,
+.imageZoomTrigger {
+  cursor: zoom-in;
+}
+
+.imageZoomTrigger {
+  position: relative;
+  transform-origin: center;
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.imageZoomButton:focus-visible,
+.imageZoomTrigger:focus-visible {
+  outline: 3px solid #0070f3;
+  outline-offset: 3px;
+}
+
+.imageZoomButton.imageZoomExpanded,
+.imageZoomTrigger.imageZoomExpanded {
+  cursor: zoom-out;
+  filter: drop-shadow(0 1rem 1.5rem rgba(0, 0, 0, 0.24));
+  position: relative;
+  transform: scale(1.08);
+  z-index: 5;
+}
+
+.imageZoomButton.imageZoomExpanded img,
+.imageZoomTrigger.imageZoomExpanded {
+  cursor: zoom-out;
 }
 
 small {
@@ -37,4 +91,28 @@ small i {
   display: inline-block;
   margin: 0.1em;
   padding: 0.1em;
+}
+
+.mermaid-diagram {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.mermaid-diagram svg {
+  height: auto;
+  max-width: 100%;
+}
+
+pre.mermaid-error {
+  border-left: 4px solid #d1242f;
+  padding-left: 1rem;
+}
+
+pre.mermaid-error::before {
+  color: #d1242f;
+  content: 'Mermaid diagram failed to render';
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }

@@ -4,7 +4,8 @@ import Head from 'next/head';
 import Date from "../../components/date"
 import utilStyles from '../../styles/utils.module.css';
 import {Tags} from "../../components/Tags"
-import Image from 'next/image'
+import MarkdownContent from '../../components/MarkdownContent'
+import ExpandableImage from '../../components/ExpandableImage'
 
 // import { useRouter } from 'next/router'
 
@@ -33,19 +34,31 @@ export async function getStaticPaths() {
 }
 
 function Post({ postData }) {
+  const imageSrc = typeof postData.image === 'string' ? postData.image.trim() : ''
+
   return (
     <Layout>
       <Head>
         <title>{postData?.title}</title>
       </Head>
       <article>
-        <Image src={postData.image} className={utilStyles.imageHeader} title="post image header" alt="image" width="600" height="300"/>
+        {imageSrc && (
+          <ExpandableImage
+            src={imageSrc}
+            className={utilStyles.imageHeader}
+            title="post image header"
+            alt={`${postData.title} image`}
+            width="600"
+            height="300"
+            loading="eager"
+          />
+        )}
         <h1 className={utilStyles.headingXl}>{postData?.title}</h1>
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
         <Tags tags={postData.tags} />
-        <div dangerouslySetInnerHTML={{ __html: postData?.contentHtml }} />
+        <MarkdownContent html={postData?.contentHtml || ''} />
       </article>
     </Layout>
   );

@@ -10,12 +10,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "assets:process": "node scripts/upload-assets.mjs --process-only",
+    "assets:upload": "node scripts/upload-assets.mjs",
     "prepare": "husky"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
     "glob": "^13.0.6",
     "gray-matter": "^4.0.3",
+    "mermaid": "^11.14.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -26,6 +29,7 @@
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
+    "sharp": "^0.34.5",
     "unified": "^11.0.5"
   },
   "devDependencies": {

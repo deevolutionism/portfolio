@@ -19,6 +19,11 @@
 .DS_Store
 *.pem
 
+# local content assets staged for S3 upload
+/content-assets/*
+!/content-assets/.gitkeep
+/.content-assets-processed/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

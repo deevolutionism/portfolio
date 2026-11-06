@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "assets:process": "node scripts/upload-assets.mjs --process-only",
     "assets:upload": "node scripts/upload-assets.mjs",
-    "prepare": "husky"
+    "prepare": "husky",
+    "assets:viewer": "node scripts/upload-viewer-images.mjs"
   },
   "dependencies": {
     "date-fns": "^4.1.0",

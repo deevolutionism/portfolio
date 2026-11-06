@@ -95,3 +95,33 @@ flowchart TD
 ````
 
 Mermaid rendering runs in the browser only on post pages that include a Mermaid block.
+
+## Full-screen image viewer
+
+Post header images and unlinked Markdown images open in a shared full-screen
+native dialog. It starts with the entire image fitted to the viewport. Use +/−,
+Fit, or 100% to inspect details, drag with a mouse or swipe to pan, and close with
+Escape, the close button, or the empty backdrop. The dialog traps focus, locks
+background scrolling, and returns focus and reading position when closed.
+Linked Markdown images retain their normal link behavior.
+
+Older content assets may be only 612px wide. To publish a larger viewing copy from
+an original already staged in `content-assets/`, run:
+
+```sh
+npm run assets:viewer -- project-screenshot.png another-screenshot.jpg
+```
+
+This uploads only the explicitly named images, optimized to at most 2560px per
+side. Content-hashed WebP filenames avoid stale immutable caches. It then updates
+`lib/image-viewer-sources.json`; commit that mapping with the site changes.
+Article thumbnails keep their existing URLs, and larger files load only when the
+viewer opens. Images without a published viewing copy use their existing source.
+Animated images are rejected by this helper rather than flattened to a still.
+
+`scripts/check-image-viewer.mjs` exports a browser regression check for the
+Politcraft post. At a 1440×1000 viewport it checks meaningful enlargement, aspect
+ratio, zoom controls, actual pixels, focus restoration, and preserved reading
+position. It can be passed to Playwright's `page.evaluate`, or run as a function
+in browser devtools. Also exercise Escape, keyboard focus containment, desktop
+panning, and touch/mobile layout when changing the viewer.

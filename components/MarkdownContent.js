@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
+
+import { useImageViewer } from './ImageViewer'
 
 let mermaidDiagramId = 0
 
@@ -12,31 +14,7 @@ function getMermaidErrorMessage(error) {
 
 export default function MarkdownContent({ html }) {
   const contentRef = useRef(null)
-  const expandedImageRef = useRef(null)
-
-  const clearExpandedImage = useCallback(() => {
-    const currentImage = expandedImageRef.current
-
-    currentImage?.classList.remove('imageZoomExpanded')
-    currentImage?.setAttribute('aria-expanded', 'false')
-    expandedImageRef.current = null
-  }, [])
-
-  const toggleExpandedImage = useCallback((image) => {
-    const currentImage = expandedImageRef.current
-
-    if (currentImage === image) {
-      clearExpandedImage()
-
-      return
-    }
-
-    clearExpandedImage()
-
-    image.classList.add('imageZoomExpanded')
-    image.setAttribute('aria-expanded', 'true')
-    expandedImageRef.current = image
-  }, [clearExpandedImage])
+  const openImage = useImageViewer()
 
   function getZoomableImage(target) {
     if (!(target instanceof Element)) {
@@ -134,39 +112,7 @@ export default function MarkdownContent({ html }) {
   }, [html])
 
   useEffect(() => {
-    function handleDocumentPointerDown(event) {
-      const currentImage = expandedImageRef.current
-
-      if (!currentImage) {
-        return
-      }
-
-      if (event.target instanceof Element && currentImage.contains(event.target)) {
-        return
-      }
-
-      clearExpandedImage()
-    }
-
-    function handleDocumentKeyDown(event) {
-      if (event.key === 'Escape') {
-        clearExpandedImage()
-      }
-    }
-
-    document.addEventListener('pointerdown', handleDocumentPointerDown)
-    document.addEventListener('keydown', handleDocumentKeyDown)
-
-    return () => {
-      document.removeEventListener('pointerdown', handleDocumentPointerDown)
-      document.removeEventListener('keydown', handleDocumentKeyDown)
-    }
-  }, [clearExpandedImage])
-
-  useEffect(() => {
     const container = contentRef.current
-
-    clearExpandedImage()
 
     if (!container) {
       return
@@ -185,13 +131,13 @@ export default function MarkdownContent({ html }) {
       image.loading = image.loading || 'lazy'
       image.tabIndex = 0
       image.setAttribute('role', 'button')
-      image.setAttribute('aria-expanded', 'false')
+      image.setAttribute('aria-haspopup', 'dialog')
       image.setAttribute(
         'aria-label',
         image.alt ? `Expand image: ${image.alt}` : 'Expand image'
       )
     })
-  }, [clearExpandedImage, html])
+  }, [html])
 
   function handleContentClick(event) {
     const image = getZoomableImage(event.target)
@@ -201,7 +147,7 @@ export default function MarkdownContent({ html }) {
     }
 
     event.preventDefault()
-    toggleExpandedImage(image)
+    openImage({ src: image.currentSrc || image.src, alt: image.alt })
   }
 
   function handleContentKeyDown(event) {
@@ -216,7 +162,7 @@ export default function MarkdownContent({ html }) {
     }
 
     event.preventDefault()
-    toggleExpandedImage(image)
+    openImage({ src: image.currentSrc || image.src, alt: image.alt })
   }
 
   return (

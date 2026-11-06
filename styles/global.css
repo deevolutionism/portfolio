@@ -68,18 +68,33 @@ img {
   outline-offset: 3px;
 }
 
-.imageZoomButton.imageZoomExpanded,
-.imageZoomTrigger.imageZoomExpanded {
-  cursor: zoom-out;
-  filter: drop-shadow(0 1rem 1.5rem rgba(0, 0, 0, 0.24));
-  position: relative;
-  transform: scale(1.08);
-  z-index: 5;
-}
-
-.imageZoomButton.imageZoomExpanded img,
-.imageZoomTrigger.imageZoomExpanded {
-  cursor: zoom-out;
+/* The native modal top layer escapes article width and stacking contexts. */
+.imageViewer { border: 0; padding: 0; margin: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; background: #0c1119; color: #edf2f8; overflow: hidden; }
+.imageViewer[open] { display: flex; flex-direction: column; }
+.imageViewer::backdrop { background: rgba(0, 0, 0, .9); }
+.imageViewerToolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 20px; border-bottom: 1px solid #34404f; flex-shrink: 0; }
+.imageViewerTitle { font-size: 14px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.imageViewerControls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.imageViewerControls button { border: 1px solid #526075; border-radius: 6px; min-width: 44px; height: 44px; background: #1d2838; color: white; padding: 0 12px; font: inherit; font-size: 15px; cursor: pointer; }
+.imageViewerControls button:disabled { opacity: .4; cursor: default; }
+.imageViewerControls button:hover:not(:disabled) { background: #354760; }
+.imageViewerControls button:focus-visible, .imageViewer a:focus-visible { outline: 3px solid #94c8ff; outline-offset: 3px; }
+.imageViewerControls output { font-size: 13px; min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.imageViewerStage { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; touch-action: pan-x pan-y pinch-zoom; }
+.imageViewerCanvas { display: flex; align-items: center; justify-content: center; }
+.imageViewerCanvas img { display: block; flex: none; max-width: none; margin: 0; object-fit: contain; cursor: zoom-in; user-select: none; -webkit-user-drag: none; }
+.imageViewerPannable img { cursor: grab; }
+.imageViewerPannable img:active { cursor: grabbing; }
+.imageViewerCanvas p { padding: 24px; max-width: 600px; }
+.imageViewer a { color: #a8d0ff; }
+.imageViewerHint { padding: 8px 20px; font-size: 12px; color: #bdcadb; text-align: center; flex-shrink: 0; }
+.imageViewerHint a { margin-left: 16px; white-space: nowrap; }
+@media (max-width: 640px) {
+  .imageViewerToolbar { flex-direction: column; gap: 8px; padding: 8px; }
+  .imageViewerTitle { max-width: 100%; font-size: 12px; }
+  .imageViewerControls { gap: 4px; }
+  .imageViewerControls button { padding: 0 8px; }
+  .imageViewerHint { padding: 6px 12px; font-size: 11px; }
 }
 
 small {
